@@ -4,19 +4,11 @@ const renderer = require('vue-server-renderer').createRenderer({
 });
 const createApp = require('./src/app.js');
 
-const content = {
-  title: "HELLO SSR",
-  meta: `
-    <meta name="keyworld" content="eddie,vue,ssr">
-    <meta name="title" content="vuessr">
-  `
-};
-
 module.exports = async (req, res) => {
   try {
     const context = { url: req.url };
     const app = createApp(context);
-    const html = await renderer.renderToString(app, content);
+    const html = await renderer.renderToString(app);
 
     res.send(html);
   } catch(error) {
