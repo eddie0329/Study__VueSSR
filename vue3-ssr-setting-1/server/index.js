@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
-const { renderToString } = require("@vue/server-renderer");
+const { renderToString } = require('@vue/server-renderer');
 const PORT = process.env.PORT || 3000;
 const manifest = require("../dist/server/ssr-manifest.json");
 const appPath = path.join(__dirname, "../dist", "server", manifest["app.js"]);

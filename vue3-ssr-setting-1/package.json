@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint",
     "build:client": "vue-cli-service build --dest dist/client",
     "build:server": "VUE_APP_SSR=true vue-cli-service build --dest dist/server",
-    "build:ssr": "rm -rf ./dist && npm run build:client && npm run build:server",
+    "build:ssr": "rm -rf ./dist && npm run build:client && npm run build:server && npm run start",
     "start": "node server"
   },
   "dependencies": {
@@ -16,7 +16,8 @@
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "express": "^4.17.2",
-    "vue": "^3.2.6",
+    "vue": "^3.2.20",
+    "vue3-component-library": "^0.0.6",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
@@ -30,7 +31,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
-    "webpack-manifest-plugin": "^2.2.0",
-    "webpack-node-externals": "^2.5.1"
+    "webpack-manifest-plugin": "^4.1.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }
