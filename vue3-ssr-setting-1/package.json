@@ -16,9 +16,10 @@
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "express": "^4.17.2",
+    "serialize-javascript": "^6.0.0",
     "vue": "^3.2.20",
-    "vue3-component-library": "^0.0.6",
     "vue-router": "^4.0.0-0",
+    "vue3-component-library": "^0.0.6",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

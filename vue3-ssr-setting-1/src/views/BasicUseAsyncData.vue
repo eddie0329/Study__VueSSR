@@ -1,28 +1,21 @@
 <template>
   <div class="block">
+    <h1>Hello Basic Async Data</h1>
     <ul>
       <li v-for="d in data" :key="d.id">{{ d.title }}</li>
     </ul>
   </div>
 </template>
 
+<script>
+export default {
+  name: 'BasicUseAsyncData'
+}
+</script>
+
+
 <script setup>
-import { ref, onMounted, onServerPrefetch } from "vue";
-import axios from "axios";
+import { useAsyncData } from "../composables/useAsyncData";
 
-const data = ref(null);
-
-onServerPrefetch(async () => {
-  console.log("HELLO SERVER PREFETCH");
-  data.value = true;
-  const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
-  data.value = res.data;
-});
-
-onMounted(async () => {
-  if (!data.value) {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
-    data.value = res.data;
-  }
-});
+const [data] = useAsyncData("https://jsonplaceholder.typicode.com/todos");
 </script>

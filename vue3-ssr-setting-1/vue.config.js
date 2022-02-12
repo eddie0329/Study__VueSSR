@@ -1,7 +1,6 @@
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const nodeExternals = require("webpack-node-externals");
 const webpack = require("webpack");
-const path = require("path");
 const IS_SSR = Boolean(process.env.VUE_APP_SSR);
 
 module.exports = {
@@ -18,10 +17,6 @@ module.exports = {
       return definitions;
     });
     if (IS_SSR) {
-      // config.resolve.alias.set(
-      //   "vue3-component-library/components",
-      //   path.resolve(__dirname, "node_modules/vue3-component-library/dist/cjs")
-      // );
       config.entry("app").clear().add("./src/entry-server.js");
       config.target("node");
       config.output.libraryTarget("commonjs2");
@@ -45,10 +40,6 @@ module.exports = {
         })
       );
     } else {
-      config.resolve.alias.set(
-        "vue3-component-library/components",
-        path.resolve(__dirname, "node_modules/vue3-component-library/dist/esm")
-      );
       config.devServer.disableHostCheck(true);
       config.entry("app").clear().add("./src/entry-client.js");
       config.target("web");
