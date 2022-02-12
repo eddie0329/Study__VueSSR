@@ -4,7 +4,7 @@ import {
   createMemoryHistory,
 } from "vue-router";
 import Home from "../views/Home.vue";
-// import BasicAsyncData from "../views/BasicAsyncData.vue";
+import BasicUseAsyncData from "../views/BasicUseAsyncData.vue";
 
 const { IS_SSR } = process.env;
 
@@ -23,11 +23,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
-  // {
-  //   path: "/basicAsyncData",
-  //   name: "BasicAsyncData",
-  //   component: BasicAsyncData
-  // },
+  {
+    path: "/basicUseAsyncData",
+    name: "BasicUseAsyncData",
+    component: BasicUseAsyncData
+  },
 ];
 
 export default () =>

@@ -18,10 +18,10 @@ module.exports = {
       return definitions;
     });
     if (IS_SSR) {
-      config.resolve.alias.set(
-        "vue3-component-library/components",
-        path.resolve(__dirname, "node_modules/vue3-component-library/dist/cjs")
-      );
+      // config.resolve.alias.set(
+      //   "vue3-component-library/components",
+      //   path.resolve(__dirname, "node_modules/vue3-component-library/dist/cjs")
+      // );
       config.entry("app").clear().add("./src/entry-server.js");
       config.target("node");
       config.output.libraryTarget("commonjs2");
