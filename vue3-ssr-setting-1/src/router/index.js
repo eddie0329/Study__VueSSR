@@ -4,7 +4,9 @@ import {
   createMemoryHistory,
 } from "vue-router";
 import Home from "../views/Home.vue";
-import BasicUseAsyncData from "../views/BasicUseAsyncData.vue";
+import BasicUseAsyncData from "../views/AsyncData/BasicUseAsyncData.vue";
+import MultipleAsyncData from '../views/AsyncData/MultipleAsyncData.vue';
+import NestUseAsyncData from '../views/AsyncData/NestUseAsyncData.vue';
 
 const { IS_SSR } = process.env;
 
@@ -27,6 +29,16 @@ const routes = [
     path: "/basicUseAsyncData",
     name: "BasicUseAsyncData",
     component: BasicUseAsyncData
+  },
+  {
+    path: "/multipleAsyncData",
+    name: "MultipleAsyncData",
+    component: MultipleAsyncData
+  },
+  {
+    path: "/nestUseAsyncData",
+    name: "NestUseAsyncData",
+    component: NestUseAsyncData
   },
 ];
 
