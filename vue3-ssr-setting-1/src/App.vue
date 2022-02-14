@@ -1,12 +1,13 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
+    <router-link to="/modal">Modal</router-link> |
+    <router-link to="/toast">Toast</router-link> |
     <router-link to="/basicUseAsyncData">BasicAsyncData</router-link> |
     <router-link to="/multipleAsyncData">MultipleAsyncData</router-link> |
     <router-link to="/nestUseAsyncData">NestUseAsyncData</router-link> |
   </div>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>

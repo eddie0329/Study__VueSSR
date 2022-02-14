@@ -2,6 +2,7 @@ import { createApp, createSSRApp, getCurrentInstance } from "vue";
 import App from "./App.vue";
 import createRouter from "./router";
 import createStore from "./store";
+import modalPlugin from './modules/modal';
 
 /**
  * Returns the context
@@ -19,5 +20,6 @@ export default () => {
   app.__custom_vue_ssr__ = {};
   app.use(router);
   app.use(store);
+  app.use(modalPlugin);
   return { app, router, store };
 };

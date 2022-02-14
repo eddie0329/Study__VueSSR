@@ -17,13 +17,16 @@ const routes = [
     component: Home,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/modal",
+    name: "Modal",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "about" */ "../views/ModalPage.vue"),
+  },
+  {
+    path: "/toast",
+    name: "Toast",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ToastPage.vue"),
   },
   {
     path: "/basicUseAsyncData",
