@@ -1,8 +1,10 @@
 <template>
   <div class="modal">
+    <div class="modal-bg" />
     <div class="modal-content">
       <h1>Hello Modal</h1>
-      <button>Confirm</button>
+      <h3>{{ props.options.name }}</h3>
+      <button @click="$emit('resolve', 'sam')">Confirm</button>
       <button>Cancel</button>
       <button>Close</button>
     </div>
@@ -10,22 +12,36 @@
 </template>
 
 <script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  options: { type: Object, default: () => ({}) },
+});
 </script>
 
 <style scoped>
 .modal {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
 }
 
 .modal-content {
+  z-index: 1;
   background: white;
   border-radius: 30px;
   width: 400px;

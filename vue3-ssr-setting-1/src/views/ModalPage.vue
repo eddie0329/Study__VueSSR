@@ -6,13 +6,16 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useModal } from '../modules/modal';
 import Modal from '../modules/modal/Modal.vue';
 
+const name = ref('eddie');
 const { addModal } = useModal();
 
 const onClick = async () => {
-  await addModal(Modal, { name: 'eddie' });
+  const _name = await addModal(Modal, { name });
+  console.log("HELLO", _name);
 };
 </script>
 

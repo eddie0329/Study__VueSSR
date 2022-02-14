@@ -1,10 +1,11 @@
 <template>
   <div>
     <component
-      v-for="(modal) in modals"
+      v-for="modal in modals"
       :key="modal.id"
       :is="modal.component"
       :options="modal.options"
+      @resolve="(value) => onResolve(value, modal.id, modal.resolve)"
     />
   </div>
 </template>
@@ -36,6 +37,15 @@ const addModal = (component, options = {}) => {
       reject,
     });
   });
+};
+
+const closeModal = (id) => {
+  modals.value = modals.value.filter(({ id: _id }) => id !== _id);
+};
+
+const onResolve = (value, id, resolve) => {
+  resolve(value);
+  closeModal(id);
 };
 
 defineExpose({
