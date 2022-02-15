@@ -17,14 +17,14 @@ import { defineExpose, ref, markRaw } from "vue";
 /** @typedef {{ 
   id: number, 
   options: {},
-  component: Vue.component, 
+  component: import('vue').component,
   resolve: Promise.resolve, 
   reject: Promise.reject 
   }} Modal */
 
-/** @type {number} */
+/** @type {import('vue').Ref<number>} */
 const id = ref(0);
-/** @type{Modal[]} */
+/** @type {import('vue').Ref<[]>} */
 const modals = ref([]);
 
 const addModal = (component, options = {}) => {

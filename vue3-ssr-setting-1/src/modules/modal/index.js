@@ -1,5 +1,5 @@
 import { createApp, getCurrentInstance } from "vue";
-import ModalContainer from "./ModalContainer.vue";
+import ModalContainer from "./component/ModalContainer.vue";
 
 export const useModal = () => {
   const modalContainer = getCurrentInstance()?.appContext?.app?._modalContainer;

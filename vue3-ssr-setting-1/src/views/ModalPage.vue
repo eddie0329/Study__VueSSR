@@ -8,7 +8,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useModal } from '../modules/modal';
-import Modal from '../modules/modal/Modal.vue';
+import Modal from '../modules/modal/component/Modal.vue';
 
 const name = ref('eddie');
 const { addModal } = useModal();
