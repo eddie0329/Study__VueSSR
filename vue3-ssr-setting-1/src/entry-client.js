@@ -1,4 +1,5 @@
-import createApp from "./app.js";
+import createApp from './app.js';
+import modalPlugin from './modules/modal';
 
 const { app, router, store } = createApp();
 
@@ -6,5 +7,5 @@ const { app, router, store } = createApp();
   const storeInitialState = window.__INITIAL_STATE__;
   await _router.isReady();
   if (storeInitialState) _store.replaceState(storeInitialState);
-  _app.mount("#app");
+  _app.use(modalPlugin).mount('#app');
 })(app, router, store);

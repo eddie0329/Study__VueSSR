@@ -1,15 +1,35 @@
-import { createApp, getCurrentInstance } from "vue";
-import ModalContainer from "./component/ModalContainer.vue";
+import { createApp } from 'vue';
+import ModalContainer from './component/ModalContainer.vue';
 
-export const useModal = () => {
-  const modalContainer = getCurrentInstance()?.appContext?.app?._modalContainer;
-  return modalContainer?._instance?.exposed ?? {};
-};
+class ModalProxy {
+  /** @type {ModalProxy} */
+  modalProxy;
+  modalContainer;
+
+  static getInstance() {
+    if (this.modalProxy) return this.modalProxy;
+    else {
+      this.modalProxy = new ModalProxy();
+      return this.modalProxy;
+    }
+  }
+
+  setModalContainer(modalContainer) {
+    this.modalContainer = modalContainer;
+    return this;
+  }
+
+  addModal(component, options) {
+    return this.modalContainer?.addModal(component, options);
+  }
+}
+
+/** @return {ModalProxy} */
+export const useModal = () => ModalProxy.getInstance();
 
 export default {
-  install(app) {
+  install() {
     const modalContainer = createApp(ModalContainer);
-    app._modalContainer = modalContainer;
-    modalContainer.mount("#modal");
+    ModalProxy.getInstance().setModalContainer(modalContainer.mount('#modal'));
   },
 };
