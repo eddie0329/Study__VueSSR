@@ -24,9 +24,13 @@ class ModalProxy {
   }
 }
 
-/** @return {ModalProxy} */
+/**
+ * @description Composable api
+ * @return {ModalProxy}
+ */
 export const useModal = () => ModalProxy.getInstance();
 
+/* Plugin */
 export default {
   install() {
     const modalContainer = createApp(ModalContainer);
