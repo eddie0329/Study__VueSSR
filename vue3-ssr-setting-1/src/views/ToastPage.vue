@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import a from "../modules/toast/ToastContainer.vue";
+import a from "../modules/toast/components/ToastContainer.vue";
 
 console.log(a);
 </script>

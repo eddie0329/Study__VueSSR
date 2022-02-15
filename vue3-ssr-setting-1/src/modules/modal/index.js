@@ -3,7 +3,7 @@ import ModalContainer from './component/ModalContainer.vue';
 
 class ModalProxy {
   /** @type {ModalProxy} */
-  modalProxy;
+  static modalProxy;
   modalContainer;
 
   static getInstance() {

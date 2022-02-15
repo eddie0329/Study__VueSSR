@@ -1,19 +1,21 @@
 <template>
-$END$
+
 </template>
 
 <script>
 export default {
-name: "ToastSuccess",
-}
+  name: 'ToastSuccess',
+};
 </script>
 
 <style lang="less">
 @import 'src/less/proj';
 
 [] {
-  @media(@tp-up) {}
-  @media(@ds-up) {}
+  @media (@tp-up) {
+  }
+  @media (@ds-up) {
+  }
 
 }
 </style>

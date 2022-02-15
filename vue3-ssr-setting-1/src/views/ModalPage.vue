@@ -19,7 +19,3 @@ const onClick = async () => {
   console.log("HELLO", _name);
 };
 </script>
-
-<style>
-
-</style>
