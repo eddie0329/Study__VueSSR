@@ -3,19 +3,19 @@
     <div class="modal-bg" />
     <div class="modal-content">
       <h1>Hello Modal</h1>
-      <h3>{{ props.options.name }}</h3>
+      <h3>{{ myName }}</h3>
       <button @click="$emit('resolve', 'sam')">Confirm</button>
-      <button>Cancel</button>
-      <button>Close</button>
+      <button @click="$emit('reject')">Cancel</button>
+      <button @click="$emit('close')">Close</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps } from 'vue';
 
-const props = defineProps({
-  options: { type: Object, default: () => ({}) },
+defineProps({
+  myName: { type: String, default: '' },
 });
 </script>
 

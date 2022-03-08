@@ -32,5 +32,7 @@ export const useAsyncData = (key = errLog("key is required"), promise) => {
     }
   });
 
-  return [data];
+  return {
+    data
+  };
 };

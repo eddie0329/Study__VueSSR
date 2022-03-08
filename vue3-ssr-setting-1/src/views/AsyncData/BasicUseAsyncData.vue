@@ -11,5 +11,5 @@
 import { useAsyncData } from "../../composables/useAsyncData";
 import { apiInstance } from "../../composables/useService";
 
-const [data] = useAsyncData('BasicUseAsyncData', () => apiInstance.get('todos'));
+const {data} = useAsyncData('BasicUseAsyncData', () => apiInstance.get('todos'));
 </script>

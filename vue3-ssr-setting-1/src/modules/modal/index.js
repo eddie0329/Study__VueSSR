@@ -1,10 +1,11 @@
 import { createApp } from 'vue';
 import ModalContainer from './component/ModalContainer.vue';
+import { createAppEl } from '@/modules/utils';
 
 class ModalProxy {
   /** @type {ModalProxy} */
   static modalProxy;
-  modalContainer;
+  modalExposed;
 
   static getInstance() {
     if (this.modalProxy) return this.modalProxy;
@@ -14,13 +15,14 @@ class ModalProxy {
     }
   }
 
-  setModalContainer(modalContainer) {
-    this.modalContainer = modalContainer;
+  setModalExposed(modalExposed) {
+    this.modalExposed = modalExposed;
     return this;
   }
 
-  addModal(component, options) {
-    return this.modalContainer?.addModal(component, options);
+  addModal({ key, component, props, options }) {
+    if (typeof window === 'undefined') return;
+    return this.modalExposed?.addModal({ key, component, props, options });
   }
 }
 
@@ -32,8 +34,12 @@ export const useModal = () => ModalProxy.getInstance();
 
 /* Plugin */
 export default {
-  install() {
-    const modalContainer = createApp(ModalContainer);
-    ModalProxy.getInstance().setModalContainer(modalContainer.mount('#modal'));
+  install(app) {
+    const modalEl = createAppEl('modal');
+    const modalApp = createApp(ModalContainer);
+    const modalProxy = ModalProxy.getInstance();
+    modalProxy.setModalExposed(modalApp.mount(modalEl));
+    app.config.globalProperties.$modal = modalProxy;
+    modalApp.config.globalProperties = { ...modalApp.config.globalProperties, ...app.config.globalProperties };
   },
 };
