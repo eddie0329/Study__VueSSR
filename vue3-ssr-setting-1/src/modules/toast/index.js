@@ -1,4 +1,6 @@
-import { defineExpose, ref } from 'vue';
+import { createApp } from 'vue';
+import ToastContainer from './components/ToastContainer.vue';
+import { createAppEl } from '@/modules/utils';
 
 class ToastProxy {
   /** @type{ToastProxy} */
@@ -17,12 +19,24 @@ class ToastProxy {
     this.toastExposed = toastExposed;
     return this;
   }
+
+  addToast(msg, { type }) {
+    if (typeof window === 'undefined') return;
+    return this.toastExposed?.addToast(msg, { type });
+  }
 }
 
+/**
+ * @description Composable api for toast
+ * @return {ToastProxy}
+ */
+export const useToast = () => ToastProxy.getInstance();
 
-export const useToast = () => {
-  const count = ref(0);
-  const increment = () => count.value++;
-  defineExpose({ count, increment });
-  // return h('h1', { innerHTML: 'Hello Toast' });
+export default {
+  install() {
+    const toastEl = createAppEl('toast');
+    const toastApp = createApp(ToastContainer);
+    const toastProxy = ToastProxy.getInstance();
+    toastProxy.setToastExposed(toastApp.mount(toastEl));
+  }
 };

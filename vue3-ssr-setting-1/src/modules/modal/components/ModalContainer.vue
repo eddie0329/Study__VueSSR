@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { defineExpose, ref, markRaw } from 'vue';
+import { ref, markRaw } from 'vue';
 
 /** @type {import('vue').Ref<number>} */
 const id = ref(0);
@@ -49,6 +49,7 @@ const onReject = (value, id, reject) => {
   closeModal({ id });
 };
 
+// eslint-disable-next-line no-undef
 defineExpose({
   addModal,
   closeModal

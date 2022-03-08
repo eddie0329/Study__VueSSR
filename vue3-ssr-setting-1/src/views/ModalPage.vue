@@ -7,7 +7,7 @@
 
 <script setup>
 import { useModal } from '../modules/modal';
-import Modal from '../modules/modal/component/Modal.vue';
+import Modal from '../modules/modal/components/Modal.vue';
 
 const modal = useModal();
 

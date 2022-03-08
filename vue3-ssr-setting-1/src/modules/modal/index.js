@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import ModalContainer from './component/ModalContainer.vue';
+import ModalContainer from './components/ModalContainer.vue';
 import { createAppEl } from '@/modules/utils';
 
 class ModalProxy {
@@ -27,19 +27,17 @@ class ModalProxy {
 }
 
 /**
- * @description Composable api
+ * @description Composable api for modal
  * @return {ModalProxy}
  */
 export const useModal = () => ModalProxy.getInstance();
 
 /* Plugin */
 export default {
-  install(app) {
+  install() {
     const modalEl = createAppEl('modal');
     const modalApp = createApp(ModalContainer);
     const modalProxy = ModalProxy.getInstance();
     modalProxy.setModalExposed(modalApp.mount(modalEl));
-    app.config.globalProperties.$modal = modalProxy;
-    modalApp.config.globalProperties = { ...modalApp.config.globalProperties, ...app.config.globalProperties };
   },
 };
