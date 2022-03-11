@@ -2,9 +2,9 @@ import {
   createRouter,
   createWebHistory,
   createMemoryHistory,
-} from "vue-router";
-import Home from "../views/Home.vue";
-import BasicUseAsyncData from "../views/AsyncData/BasicUseAsyncData.vue";
+} from 'vue-router';
+import Home from '../views/Home.vue';
+import BasicUseAsyncData from '../views/AsyncData/BasicUseAsyncData.vue';
 import MultipleAsyncData from '../views/AsyncData/MultipleAsyncData.vue';
 import NestUseAsyncData from '../views/AsyncData/NestUseAsyncData.vue';
 
@@ -12,35 +12,41 @@ const { IS_SSR } = process.env;
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: Home,
   },
   {
-    path: "/modal",
-    name: "Modal",
+    path: '/store',
+    name: 'Store',
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/ModalPage.vue"),
+      import(/* webpackChunkName: "about" */ '../views/StorePage.vue'),
   },
   {
-    path: "/toast",
-    name: "Toast",
+    path: '/modal',
+    name: 'Modal',
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/ToastPage.vue"),
+      import(/* webpackChunkName: "about" */ '../views/ModalPage.vue'),
   },
   {
-    path: "/basicUseAsyncData",
-    name: "BasicUseAsyncData",
+    path: '/toast',
+    name: 'Toast',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/ToastPage.vue'),
+  },
+  {
+    path: '/basicUseAsyncData',
+    name: 'BasicUseAsyncData',
     component: BasicUseAsyncData
   },
   {
-    path: "/multipleAsyncData",
-    name: "MultipleAsyncData",
+    path: '/multipleAsyncData',
+    name: 'MultipleAsyncData',
     component: MultipleAsyncData
   },
   {
-    path: "/nestUseAsyncData",
-    name: "NestUseAsyncData",
+    path: '/nestUseAsyncData',
+    name: 'NestUseAsyncData',
     component: NestUseAsyncData
   },
 ];
